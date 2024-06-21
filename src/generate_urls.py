@@ -18,7 +18,7 @@ def main():
     for file in file_list:
         record.append({'title': file['title'], 'link' : SHARE_URL.format(file['id'])})
     df = pd.DataFrame.from_records(record)
-    df.to_csv(os.path.join('file_list.csv'), index=False)
+    df.to_csv('file_list.csv', index=False)
 
 if __name__ == '__main__':
     main()
