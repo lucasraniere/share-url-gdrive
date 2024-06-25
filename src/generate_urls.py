@@ -8,7 +8,7 @@ g_auth.LocalWebserverAuth()
 drive = GoogleDrive(g_auth)
 
 FOLDER_ID = ''
-SHARE_URL = 'https://drive.google.com/file/d/{}/view?usp=sharing'
+query = "'{}' in parents and trashed=false".format(FOLDER_ID)
 PERMISISONS = {
     'type': 'anyone',
     'value': 'anyone',
@@ -23,6 +23,7 @@ def main():
         record.append({'title': file['title'], 'link' : file['alternateLink']})
     df = pd.DataFrame.from_records(record)
     df.to_csv('file_list.csv', index=False)
+
 
 if __name__ == '__main__':
     main()
