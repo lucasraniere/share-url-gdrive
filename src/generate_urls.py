@@ -18,7 +18,9 @@ PERMISISONS = {
 def main():
     record = []
     file_list = drive.ListFile({'q': query}).GetList()
-    for file in file_list:
+    file_amount = len(file_list)
+    for idx, file in enumerate(file_list):
+        print('Processando arquivo {} de {}...'.format(idx+1, file_amount))
         file.InsertPermission(PERMISISONS)
         record.append({'title': file['title'], 'link' : file['alternateLink']})
     df = pd.DataFrame.from_records(record)
